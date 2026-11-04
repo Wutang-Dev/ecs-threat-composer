@@ -1,0 +1,23 @@
+# Dependencies
+**/node_modules
+
+# Build outputs
+**/build
+**/dist
+
+# Git
+.git
+.gitignore
+
+# Environment files and secrets
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+
+# Infrastructure and CI/CD
+infra/
+.github/
+
+# Documentation
+README.md
