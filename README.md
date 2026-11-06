@@ -16,5 +16,5 @@ I first built the infrastructure manually using the AWS Console before recreatin
 
 **Application:** https://tm.rginfralabs.co.uk
 
-**Build documentation:** [BUILD.md](BUILD.md)
+**Build documentation showing how I built the project:** [BUILD.md](BUILD.md) - in order of how I tackled the project from deploying locally through to creating CI/CD automated pipelines
 
