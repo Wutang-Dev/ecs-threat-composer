@@ -7,4 +7,5 @@ module "alb" {
 
   public_subnet_ids     = module.vpc.public_subnet_ids
   alb_security_group_id = module.vpc.alb_security_group_id
+  vpc_id                = module.vpc.vpc_id
 }

@@ -22,3 +22,7 @@ variable "alb_name" {
   type        = string
   default     = "threat-composer-alb"
 }
+variable vpc_id {
+  description = "The ID of the VPC"
+  type        = string
+}
