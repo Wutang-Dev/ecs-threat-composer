@@ -30,13 +30,15 @@ output "private_subnet_cidrs" {
   value       = aws_subnet.private[*].cidr_block
   description = "The CIDR blocks of the private subnets."
 }
-# private route table id
 output "private_route_table_id" {
   value       = aws_route_table.private.id
   description = "The ID of the private route table."
 }
-#nat gateway id
 output "nat_gateway_id" {
   value       = aws_nat_gateway.main.id
   description = "The ID of the NAT Gateway."
+}
+output "nat_gateway_public_ip" {
+  value       = aws_eip.nat.public_ip
+  description = "The public IP of the NAT Gateway."
 }

@@ -35,12 +35,10 @@ output "private_route_table_id" {
   description = "ID of the private route table"
   value       = module.vpc.private_route_table_id
 }
-# nat gateway id
 output "nat_gateway_id" {
   description = "ID of the NAT Gateway"
   value       = module.vpc.nat_gateway_id
 }
-#output nat public ip
 output "nat_gateway_public_ip" {
   description = "Public IP of the NAT Gateway"
   value       = module.vpc.nat_gateway_public_ip
