@@ -24,6 +24,16 @@ I configured an Internet Gateway, public route tables, a NAT Gateway with an Ela
 
 I organised the configuration into a reusable VPC module using variables and outputs, allowing me to manage and deploy the networking infrastructure consistently through Infrastructure as Code (IaC).
 
+### Application Load Balancer Deployment Using Terraform
+
+I used Terraform to deploy an internet-facing Application Load Balancer across three public subnets, connecting it to my existing VPC and security groups.
+
+I configured a target group on port 8080, an HTTP listener to redirect traffic to HTTPS, and an HTTPS listener using my existing AWS ACM certificate.
+
+I used `terraform.tfvars` to supply the ACM certificate ARN without hardcoding it into my configuration or exposing it on GitHub.
+
+Both listeners were successfully deployed and verified using `terraform apply`.
+
 **Application:** https://tm.rginfralabs.co.uk
 
 **Build documentation showing how I built the project:** [BUILD.md](BUILD.md) - in order of how I tackled the project from deploying locally to building in the AWS Console 
