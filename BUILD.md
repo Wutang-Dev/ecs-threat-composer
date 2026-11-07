@@ -142,31 +142,3 @@ Browser Check displaying https://tm.rginfralabs.co.uk/workspaces/default/dashboa
 
 ![Browser Check displaying https](images/29-brower-check.png)
 
-## Terraform 
-
-I then rebuiilt the infrastructure in Terraform . I first built the provider.tf and created a variable for the region 
-
-### Provider
-
-![Terraform provider](images/30-provider.png)
-
-![Region Vars](images/31-region-var.png)
-
-I then Initialise Terraform , Ran Terraform Format and Validate
-
-
-![Terraform fmt and validate](images/33-terra-fmt-validate.png)
-
-### VPC 
-I then built the VPC module 
-
-![VPC main.tf](images/34-vpc-main.png)
-
-
-![VPC variabless.tf](images/35-vpc-var.png)
-
-
-![VPC Outputs](images/36-vpc-ouputs.png)
-
-
-I then connected the VPC module to my root main.tf 
