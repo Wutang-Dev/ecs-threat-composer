@@ -33,4 +33,9 @@ variable "availability_zones" {
   type        = list(string)
   default     = ["eu-north-1a", "eu-north-1b", "eu-north-1c"]
 }
+# varaible for ACM cerrtificate
+variable "acm_certificate_arn" {
+  description = "The ARN of the ACM certificate for the ALB."
+  type        = string
+}
 

@@ -1,10 +1,8 @@
-#variable for region 
 variable "aws_region" {
   description = "The AWS region to deploy resources in."
   type        = string
   default     = "eu-north-1"
 }
-
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC."
   type        = string
@@ -15,9 +13,12 @@ variable "alb_internal" {
   type        = bool
   default     = false
 }
-#variable for alb_threat_composer_tag
 variable "alb_threat_composer_tag" {
   description = "The tag for the Application Load Balancer."
   type        = string
   default     = "threat-composer-alb"
+}
+variable "acm_certificate_arn" {
+  description = "The ARN of the ACM certificate for the ALB."
+  type        = string
 }
