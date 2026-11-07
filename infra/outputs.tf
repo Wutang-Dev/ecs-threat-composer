@@ -30,7 +30,6 @@ output "private_subnet_cidrs" {
   description = "CIDR blocks of the private subnets"
   value       = module.vpc.private_subnet_cidrs
 }
-# private route table id
 output "private_route_table_id" {
   description = "ID of the private route table"
   value       = module.vpc.private_route_table_id
@@ -42,4 +41,12 @@ output "nat_gateway_id" {
 output "nat_gateway_public_ip" {
   description = "Public IP of the NAT Gateway"
   value       = module.vpc.nat_gateway_public_ip
+}
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = module.alb.alb_dns_name
+}
+output "alb_arn" {
+  description = "ARN of the Application Load Balancer"
+  value       = module.alb.alb_arn
 }
