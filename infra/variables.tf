@@ -22,9 +22,13 @@ variable "acm_certificate_arn" {
   description = "The ARN of the ACM certificate for the ALB."
   type        = string
 }
-# elb threat composer tag
 variable "elb_threat_composer_tag" {
   description = "The tag for the ELB."
   type        = string
   default     = "threat-composer-elb"
+}
+variable "container_image" {
+  description = "The container image to use for the ECS task."
+  type        = string
+  default     = "nginx:latest"
 }

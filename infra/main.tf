@@ -14,4 +14,5 @@ module "alb" {
 module "ecs" {
   source              = "./modules/ecs"
   threat_composer_tag = var.elb_threat_composer_tag
+  container_image     = var.container_image
 }
