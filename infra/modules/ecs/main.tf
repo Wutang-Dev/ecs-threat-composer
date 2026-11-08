@@ -53,4 +53,5 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       ]
     },
   ])
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }

@@ -50,3 +50,7 @@ output "alb_arn" {
   description = "ARN of the Application Load Balancer"
   value       = module.alb.alb_arn
 }
+output "alb_target_group_arn" {
+  description = "ARN of the Application Load Balancer target group"
+  value       = module.alb.alb_target_group_arn
+}
