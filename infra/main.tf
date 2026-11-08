@@ -11,3 +11,7 @@ module "alb" {
   vpc_id                = module.vpc.vpc_id
   acm_certificate_arn   = var.acm_certificate_arn
 }
+module "ecs" {
+  source              = "./modules/ecs"
+  threat_composer_tag = var.elb_threat_composer_tag
+}

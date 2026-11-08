@@ -22,3 +22,9 @@ variable "acm_certificate_arn" {
   description = "The ARN of the ACM certificate for the ALB."
   type        = string
 }
+# elb threat composer tag
+variable "elb_threat_composer_tag" {
+  description = "The tag for the ELB."
+  type        = string
+  default     = "threat-composer-elb"
+}
