@@ -59,6 +59,16 @@ Browser validation showing HTTPS
 
 ![Browser validation to show HTTPS](images/38-browser-https-validation.png)
 
+### AWS Systems Manager Parameter Store (Bonus)
+
+I used Terraform to create an AWS Systems Manager Parameter Store module to manage application configuration.
+
+I stored the application environment (`production`) as a String parameter and configured the ECS task definition to retrieve it as the `APP_ENV` environment variable.
+
+I also created an IAM policy granting the ECS task execution role permission to retrieve the specific parameter.
+
+I verified the parameter using AWS CLI, confirmed the updated ECS task was running, and tested the HTTPS health endpoint successfully.
+
 **Application:** https://tm.rginfralabs.co.uk
 
 
