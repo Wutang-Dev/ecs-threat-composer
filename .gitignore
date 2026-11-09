@@ -21,7 +21,7 @@ coverage/
 !*.tfvars.example
 *.tfplan
 crash.log
-
+*.tfvars.json
 
 .vscode/
 .DS_Store

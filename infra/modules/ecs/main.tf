@@ -53,5 +53,25 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       ]
     },
   ])
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+resource "aws_ecs_service" "ecs_service" {
+  name            = "${var.threat_composer_tag}-ecs-service"
+  cluster         = aws_ecs_cluster.ecs_cluster.id
+  task_definition = aws_ecs_task_definition.ecs_task_definition.arn
+  desired_count   = 1
+  launch_type     = "FARGATE"
+
+  network_configuration {
+    subnets          = var.private_subnet_ids
+    security_groups  = [var.ecs_security_group_id]
+    assign_public_ip = false
+  }
+
+  load_balancer {
+    target_group_arn = var.alb_target_group_arn
+    container_name   = "${var.threat_composer_tag}-container"
+    container_port   = 8080
+  }
+
+  depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role_policy]
 }

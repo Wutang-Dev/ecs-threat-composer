@@ -30,5 +30,9 @@ variable "elb_threat_composer_tag" {
 variable "container_image" {
   description = "The container image to use for the ECS task."
   type        = string
-  default     = "nginx:latest"
+}
+#domain name and route53 zone id for acm certificate
+variable "domain_name" {
+  description = "The domain name for the ACM certificate."
+  type        = string
 }

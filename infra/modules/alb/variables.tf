@@ -15,18 +15,18 @@ variable "load_balancer_type" {
 variable "internal" {
   description = "Whether the load balancer is internal or internet-facing"
   type        = bool
-    default     = false
+  default     = false
 }
 variable "alb_name" {
   description = "The name of the Application Load Balancer"
   type        = string
   default     = "threat-composer-alb"
 }
-variable vpc_id {
+variable "vpc_id" {
   description = "The ID of the VPC"
   type        = string
 }
 variable "acm_certificate_arn" {
- description = "The ARN of the ACM certificate for the ALB"
- type        = string
+  description = "The ARN of the ACM certificate for the ALB"
+  type        = string
 }
