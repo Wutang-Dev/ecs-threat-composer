@@ -41,6 +41,24 @@ I used `terraform.tfvars` to supply the ACM certificate ARN without hardcoding i
 
 Both listeners were successfully deployed and verified using `terraform apply`.
 
+## ECS Fargate Deployment
+
+I used Terraform to provision an ECS cluster, task definition and Fargate service to deploy my containerised Threat Composer application. The service pulls the Docker image from Amazon ECR and runs one task within a private subnet without a public IP address. I configured security groups to allow traffic from the Application Load Balancer on port 8080. I then verified the ECS service reached a steady state and confirmed the ALB target group reported the container as healthy.
+
+## Route 53 and ACM Configuration
+
+I used Terraform to automate DNS configuration and HTTPS certificate management. I created an ACM module to request and validate a certificate for `tm.rginfralabs.co.uk` using Route 53 DNS validation. I then created a Route 53 A alias record pointing the subdomain to my Application Load Balancer. Finally, I verified DNS resolution using `dig` and tested the application and `/health` endpoint using `curl`. Both returned HTTP/2 200, confirming successful HTTPS connectivity.
+
+## validation checks
+
+terminal validation checks for deployment
+
+![terminal validation for https://tm.rginfralabs.co.uk](images/37-terminal-validation.png)
+
+Browser validation showing HTTPS
+
+![Browser validation to show HTTPS](images/38-browser-https-validation.png)
+
 **Application:** https://tm.rginfralabs.co.uk
 
 

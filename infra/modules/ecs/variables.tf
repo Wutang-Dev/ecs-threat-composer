@@ -22,8 +22,11 @@ variable "ecs_security_group_id" {
   description = "Security group ID for ECS tasks"
   type        = string
 }
-
 variable "alb_target_group_arn" {
   description = "ARN of the ALB target group"
+  type        = string
+}
+variable "app_environment_parameter_arn" {
+  description = "The ARN of the app environment SSM parameter"
   type        = string
 }

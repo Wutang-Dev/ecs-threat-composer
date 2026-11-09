@@ -51,6 +51,12 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
           protocol      = "tcp"
         },
       ]
+      secrets = [
+        {
+          name      = "APP_ENV"
+          valueFrom = var.app_environment_parameter_arn
+        }
+      ]
     },
   ])
 }
@@ -73,5 +79,25 @@ resource "aws_ecs_service" "ecs_service" {
     container_port   = 8080
   }
 
-  depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role_policy]
+  depends_on = [
+  aws_iam_role_policy_attachment.ecs_task_execution_role_policy,
+  aws_iam_role_policy.ecs_ssm_access
+]
+}
+resource "aws_iam_role_policy" "ecs_ssm_access" {
+  name = "${var.threat_composer_tag}-ecs-ssm-access"
+  role = aws_iam_role.ecs_task_execution_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "ssm:GetParameters"
+        ]
+        Resource = var.app_environment_parameter_arn
+      }
+    ]
+  })
 }

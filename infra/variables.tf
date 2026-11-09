@@ -31,8 +31,15 @@ variable "container_image" {
   description = "The container image to use for the ECS task."
   type        = string
 }
-#domain name and route53 zone id for acm certificate
 variable "domain_name" {
   description = "The domain name for the ACM certificate."
+  type        = string
+}
+variable "app_environment" {
+  description = "The environment of the application"
+  type        = string
+}
+variable "project_name" {
+  description = "The name of the project"
   type        = string
 }
