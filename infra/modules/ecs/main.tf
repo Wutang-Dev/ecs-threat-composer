@@ -80,9 +80,9 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   depends_on = [
-  aws_iam_role_policy_attachment.ecs_task_execution_role_policy,
-  aws_iam_role_policy.ecs_ssm_access
-]
+    aws_iam_role_policy_attachment.ecs_task_execution_role_policy,
+    aws_iam_role_policy.ecs_ssm_access
+  ]
 }
 resource "aws_iam_role_policy" "ecs_ssm_access" {
   name = "${var.threat_composer_tag}-ecs-ssm-access"
