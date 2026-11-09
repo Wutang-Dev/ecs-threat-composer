@@ -31,7 +31,7 @@ I configured an Internet Gateway, public route tables, a NAT Gateway with an Ela
 I organised the configuration into a reusable VPC module using variables and outputs, allowing me to manage and deploy the networking infrastructure consistently through Infrastructure as Code (IaC).
 
 
-### Application Load Balancer Deployment Using Terraform
+## Application Load Balancer Deployment Using Terraform
 
 I used Terraform to deploy an internet-facing Application Load Balancer across three public subnets, connecting it to my existing VPC and security groups.
 
@@ -59,7 +59,7 @@ Browser validation showing HTTPS
 
 ![Browser validation to show HTTPS](images/38-browser-https-validation.png)
 
-### AWS Systems Manager Parameter Store (Bonus)
+## AWS Systems Manager Parameter Store (Bonus)
 
 I used Terraform to create an AWS Systems Manager Parameter Store module to manage application configuration.
 
@@ -69,13 +69,13 @@ I also created an IAM policy granting the ECS task execution role permission to 
 
 I verified the parameter using AWS CLI, confirmed the updated ECS task was running, and tested the HTTPS health endpoint successfully.
 
-### S3 Remote Backend and State Locking
+## S3 Remote Backend and State Locking
 
 I created an S3 bucket to store my Terraform state remotely. I enabled versioning, AES-256 encryption and blocked public access. I configured native S3 state locking using `use_lockfile = true`, then migrated my existing local state using `terraform init -migrate-state`. I verified the migration and confirmed Terraform reported no infrastructure changes.
 
 ![S3 Remote Backend and State Locking](images/39-terraform-s3-migrate.png)
 
-### 6. CI/CD Automation
+## 6. CI/CD Automation
 
 #### Terraform Checks Pipeline
 
