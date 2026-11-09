@@ -31,4 +31,12 @@ module "acm" {
   domain_name     = var.domain_name
   route53_zone_id = data.aws_route53_zone.main.zone_id
 }
+# module route53
+module "route53" {
+  source = "./modules/route53"
 
+  route53_zone_id = data.aws_route53_zone.main.zone_id
+  domain_name     = var.domain_name
+  alb_dns_name    = module.alb.alb_dns_name
+  alb_zone_id     = module.alb.alb_zone_id
+}
