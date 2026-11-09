@@ -16,11 +16,11 @@ I first built the infrastructure manually using the AWS Console before recreatin
 
 **Build documentation showing how I built the project:** [BUILD.md](BUILD.md) - in order of how I tackled the project from deploying locally to building in the AWS Console 
 
-### NGINX Configuration
+## NGINX Configuration
 
 I used NGINX as the web server for my containerised Threat Composer application. After building the React application using a multi-stage Dockerfile, NGINX serves the static files on port 8080, handles React client-side routing and provides a `/health` endpoint for AWS Application Load Balancer health checks, ensuring the container is responding correctly.
 
-### Terraform Networking
+## Terraform Networking
 
 I used Terraform to recreate the AWS networking infrastructure I initially built manually using the AWS Console.
 
