@@ -69,6 +69,20 @@ I also created an IAM policy granting the ECS task execution role permission to 
 
 I verified the parameter using AWS CLI, confirmed the updated ECS task was running, and tested the HTTPS health endpoint successfully.
 
+### S3 Remote Backend and State Locking
+
+I created an S3 bucket to store my Terraform state remotely. I enabled versioning, AES-256 encryption and blocked public access. I configured native S3 state locking using `use_lockfile = true`, then migrated my existing local state using `terraform init -migrate-state`. I verified the migration and confirmed Terraform reported no infrastructure changes.
+
+![S3 Remote Backend and State Locking](images/39-terraform-s3-migrate.png)
+
+### 6. CI/CD Automation
+
+#### Terraform Checks Pipeline
+
+I created a GitHub Actions workflow to automatically check my Terraform configuration on pushes and pull requests to `main`, with manual execution also available. The pipeline runs Terraform formatting, initialisation and validation checks. I verified all checks passed successfully.
+
+![Terraform CI Pipeline Success](images/40-terraform-ci-pipeline.png)
+
 **Application:** https://tm.rginfralabs.co.uk
 
 
