@@ -113,6 +113,60 @@ I extended my Terraform GitHub Actions workflow to include `terraform destroy`. 
 
 ![Sucessful Terraform Destroy Pipeline](images/45-terraform-destroy.png)
 
+## Local Setup
+
+This application can be built and run locally using Docker without deploying any AWS infrastructure.
+
+### Prerequisites
+
+- Git
+- Docker Engine or Docker Desktop
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Wutang-Dev/ecs-threat-composer.git
+cd ecs-threat-composer
+```
+
+### 2. Build the Docker Image
+
+```bash
+docker build -t ecs-threat-composer .
+```
+
+### 3. Run the Container
+
+```bash
+docker run -d \
+  --name ecs-threat-composer \
+  -p 8088:8080 \
+  ecs-threat-composer
+```
+
+### 4. Verify the Application
+
+Open the application in your browser:
+
+```text
+http://localhost:8088
+```
+
+Check the NGINX health endpoint:
+
+```bash
+curl http://localhost:8088/health
+```
+
+### 5. Stop and Remove the Container
+
+```bash
+docker stop ecs-threat-composer
+docker rm ecs-threat-composer
+```
+
+The application runs locally through NGINX on container port `8080`, mapped to port `8088` on the host. No AWS credentials or cloud resources are required for local testing.
+
 **Application:** https://tm.rginfralabs.co.uk (App Currently Destroyed to save costs)
 
 
