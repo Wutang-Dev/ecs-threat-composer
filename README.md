@@ -107,7 +107,13 @@ I extended my Terraform GitHub Actions workflow to include `terraform apply`. Th
 
 ![Successful Terraform Deployment Pipeline](images/44-terraform-apply-success.png)
 
-**Application:** https://tm.rginfralabs.co.uk
+### Terraform Destroy Pipeline
+
+I extended my Terraform GitHub Actions workflow to include `terraform destroy`. The pipeline authenticates with AWS using OIDC, accesses my S3 remote state and generates a destroy plan before deleting infrastructure following manual confirmation. The workflow completed successfully, destroying **35 AWS resources** in **8 minutes and 33 seconds**.
+
+![Sucessful Terraform Destroy Pipeline](images/45-terraform-destroy.png)
+
+**Application:** https://tm.rginfralabs.co.uk (App Currently Destroyed to save costs)
 
 
 
