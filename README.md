@@ -101,6 +101,12 @@ I created a GitHub Actions workflow to validate my existing AWS infrastructure u
 
 ![Successful Terraform Plan Pipeline](images/43-terraform-plan-success.png)
 
+### Terraform Deployment Pipeline
+
+I extended my Terraform GitHub Actions workflow to include `terraform apply`. The pipeline authenticates with AWS using OIDC, accesses my S3 remote state and validates the infrastructure before applying the configuration. The workflow completed successfully, confirming that my existing AWS resources remained unchanged.
+
+![Successful Terraform Deployment Pipeline](images/44-terraform-apply-success.png)
+
 **Application:** https://tm.rginfralabs.co.uk
 
 
