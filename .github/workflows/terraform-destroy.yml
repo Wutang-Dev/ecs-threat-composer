@@ -49,6 +49,4 @@ jobs:
       - name: Terraform Destroy Plan
         run: terraform plan -destroy -input=false -out=destroy.tfplan
 
-      - name: Terraform Destroy
-        if: ${{ vars.ENABLE_DESTROY == 'true' }}
-        run: terraform apply -input=false -auto-approve destroy.tfplan
+    

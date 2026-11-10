@@ -18,7 +18,10 @@ data "aws_iam_policy_document" "github_ecr_trust" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:Wutang-Dev@256145436/ecs-threat-composer@1445455249:ref:refs/heads/main"]
+
+      values = [
+        "repo:Wutang-Dev@256145436/ecs-threat-composer@1445455249:ref:refs/heads/main"
+      ]
     }
   }
 }
@@ -59,9 +62,36 @@ resource "aws_iam_role_policy" "github_ecr_push" {
   role   = aws_iam_role.github_ecr.id
   policy = data.aws_iam_policy_document.github_ecr_permissions.json
 }
+data "aws_iam_policy_document" "github_terraform_trust" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    principals {
+      type        = "Federated"
+      identifiers = [aws_iam_openid_connect_provider.this.arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "token.actions.githubusercontent.com:sub"
+
+      values = [
+        "repo:Wutang-Dev@256145436/ecs-threat-composer@1445455249:ref:refs/heads/main",
+        "repo:Wutang-Dev@256145436/ecs-threat-composer@1445455249:environment:terraform-destroy"
+      ]
+    }
+  }
+}
 resource "aws_iam_role" "github_terraform_deploy" {
   name               = "github-actions-terraform-deploy"
-  assume_role_policy = data.aws_iam_policy_document.github_ecr_trust.json
+  assume_role_policy = data.aws_iam_policy_document.github_terraform_trust.json
   tags = {
     project    = "ecs-threat-composer"
     managed_by = "terraform"
