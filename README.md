@@ -95,6 +95,12 @@ I created a GitHub Actions pipeline to automatically build and push my Threat Co
 
 ![Successful Application CI/CD Pipeline](images/42-application-cicd-success.png)
 
+### Terraform Plan Pipeline
+
+I created a GitHub Actions workflow to validate my existing AWS infrastructure using Terraform. The pipeline authenticates through GitHub OIDC, accesses my S3 remote state and runs `terraform plan`. The workflow completed successfully and confirmed that my deployed infrastructure matches the Terraform configuration, with no changes required.
+
+![Successful Terraform Plan Pipeline](images/43-terraform-plan-success.png)
+
 **Application:** https://tm.rginfralabs.co.uk
 
 
