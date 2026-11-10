@@ -59,3 +59,16 @@ resource "aws_iam_role_policy" "github_ecr_push" {
   role   = aws_iam_role.github_ecr.id
   policy = data.aws_iam_policy_document.github_ecr_permissions.json
 }
+resource "aws_iam_role" "github_terraform_deploy" {
+  name               = "github-actions-terraform-deploy"
+  assume_role_policy = data.aws_iam_policy_document.github_ecr_trust.json
+  tags = {
+    project    = "ecs-threat-composer"
+    managed_by = "terraform"
+    purpose    = "GitHub-Actions-OIDC"
+  }
+}
+resource "aws_iam_role_policy_attachment" "github_terraform_deploy" {
+  role       = aws_iam_role.github_terraform_deploy.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
