@@ -83,6 +83,18 @@ I created a GitHub Actions workflow to automatically check my Terraform configur
 
 ![Terraform CI Pipeline Success](images/40-terraform-ci-pipeline.png)
 
+### Application CI Pipeline – Docker Build
+
+I created a GitHub Actions workflow to automatically build my Threat Composer Docker image when application changes are pushed to `main`. The pipeline uses Docker Buildx and tags the image with the Git commit SHA. I verified that the workflow completed successfully before adding ECR deployment.
+
+![Successful Application CI Pipeline](images/41-app-pipeline%20.png)
+
+### Application CI/CD Pipeline – Docker Build and ECR Push
+
+I created a GitHub Actions pipeline to automatically build and push my Threat Composer Docker image to Amazon ECR. I configured AWS OIDC authentication using Terraform, allowing GitHub Actions to access AWS without storing access keys. Each image is tagged using its Git commit SHA.
+
+![Successful Application CI/CD Pipeline](images/42-application-cicd-success.png)
+
 **Application:** https://tm.rginfralabs.co.uk
 
 
