@@ -47,7 +47,8 @@ data "aws_iam_policy_document" "github_ecr_permissions" {
       "ecr:CompleteLayerUpload",
       "ecr:InitiateLayerUpload",
       "ecr:PutImage",
-      "ecr:UploadLayerPart"
+      "ecr:UploadLayerPart",
+      "ecr:BatchGetImage",
     ]
     resources = ["arn:aws:ecr:eu-north-1:345471468677:repository/threat-composer"]
   }
