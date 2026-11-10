@@ -87,7 +87,7 @@ I created a GitHub Actions workflow to automatically check my Terraform configur
 
 I created a GitHub Actions workflow to automatically build my Threat Composer Docker image when application changes are pushed to `main`. The pipeline uses Docker Buildx and tags the image with the Git commit SHA. I verified that the workflow completed successfully before adding ECR deployment.
 
-![Successful Application CI Pipeline](images/41-app-pipeline%20.png)
+![Successful Application CI Pipeline](images/41-app-pipeline.png)
 
 ### Application CI/CD Pipeline – Docker Build and ECR Push
 
